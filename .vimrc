@@ -29,6 +29,7 @@ let g:gitgutter_map_keys = 0
 
 set nobackup
 set noswapfile
+set nowritebackup
 map <leader>b :NERDTreeToggle<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -88,3 +89,5 @@ call plug#end()
 nnoremap <leader>p :GFiles<cr>
 nnoremap <leader>o :Buffers<cr>
 nnoremap <leader>i :BLines<cr>
+nnoremap <leader>m :Marks<cr>
+nnoremap <leader>f :Rg<cr>
