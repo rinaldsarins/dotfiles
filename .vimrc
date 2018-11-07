@@ -1,64 +1,71 @@
-" brew install fzf
-" brew install ripgrep
-" Leader remap to space
-let mapleader = "\<Space>"
-map <leader><Space> :
+" ---------------------------------------------------
+" INSTALLATION
+" ---------------------------------------------------
+"
+" EXTERNAL UTILITIES
+" 1) FZF (https://github.com/junegunn/fzf) - brew install fzf
+" 2) RIPGREP (https://github.com/BurntSushi/ripgrep) - brew install ripgrep
+"
+" VIM-PLUG
+" (https://github.com/junegunn/vim-plug)
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"
+" After vim-plug installed open vim and run :PlugInstall
+"
+" ---------------------------------------------------
+" PLUGINS
+" ---------------------------------------------------
+"  This plugins will be automatically installed by
+"  vim-plug when :PlugInstall is run
 
-execute pathogen#infect()
+call plug#begin()
+Plug 'w0rp/ale'
+Plug 'jiangmiao/auto-pairs'
+Plug 'editorconfig/editorconfig-vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'terryma/vim-multiple-cursors'
+call plug#end()
+
+" ---------------------------------------------------
+" THEME & LOOKS
+" ---------------------------------------------------
+
+colorscheme spacegray
+let g:airline_theme='minimalist'
+
+" ---------------------------------------------------
+" SETTINGS
+" ---------------------------------------------------
+
 syntax on
 filetype plugin indent on
-"colorscheme monokai
-colorscheme spacegray
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-"set runtimepath^=~/.vim/bundle/ctrlp.vim
-"let g:ctrlp_cmd = 'CtrlP'
-"nnoremap <C-o> :CtrlPBuffer<CR>
-
 set number relativenumber
-
-let g:airline_theme='minimalist'
-
-" do not show serch message when bottom reached
-set shm+=s
-
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
-let g:gitgutter_map_keys = 0
-
 set nobackup
 set noswapfile
 set nowritebackup
-map <leader>b :NERDTreeToggle<CR>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-map <leader>h <C-W><C-H>
-map <leader>j <C-W><C-J>
-map <leader>k <C-W><C-K>
-map <leader>l <C-W><C-L>
-map <leader>w :vsp<CR>
-map <leader>e :sp<CR>
+let g:gitgutter_map_keys = 0
 
 set nowrap
 set hidden
 set wildmenu
-vnoremap // y/<C-R>"<CR>
+" do not show serch message when bottom reached
+set shm+=s
 set backspace=indent,eol,start "fix backspace issues with multiple cursors
-
-" git gutter update time
 set updatetime=100
-
-" git gutter always show sign column
-if exists('&signcolumn')  " Vim 7.4.2201
-  set signcolumn=yes
-else
-  let g:gitgutter_sign_column_always = 1
-endif
-
 " nercomment
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
@@ -73,19 +80,28 @@ set ignorecase
 
 " Autocomplete (with Ctrl + N, Ctrl + P)
 set omnifunc=javascriptcomplete#CompleteJS
+" git gutter always show sign column
+if exists('&signcolumn')  " Vim 7.4.2201
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
 
-" VIM PLUG
-call plug#begin()
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'editorconfig/editorconfig-vim'
-call plug#end()
-
-"FZF config
-" nnoremap <C-p> :GFiles<cr>
-" nnoremap <C-o> :Buffers<cr>
-" nnoremap <C-i> :BLines<cr>
-
+" ---------------------------------------------------
+" MAPPINGS
+" ---------------------------------------------------
+let mapleader = "\<Space>"
+nnoremap ; :
+map <leader>b :NERDTreeToggle<CR>
+map <leader>h <C-W><C-H>
+map <leader>j <C-W><C-J>
+map <leader>k <C-W><C-K>
+map <leader>l <C-W><C-L>
+map <leader>w :vsp<CR><C-W><C-L>
+map <leader>e :sp<CR><C-W><C-J>
+map q <Nop>
+map <leader>q :q<CR>
+vnoremap // y/<C-R>"<CR>
 nnoremap <leader>p :GFiles<cr>
 nnoremap <leader>o :Buffers<cr>
 nnoremap <leader>i :BLines<cr>
