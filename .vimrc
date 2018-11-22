@@ -65,6 +65,7 @@ set wildmenu
 " do not show serch message when bottom reached
 set shm+=s
 set backspace=indent,eol,start "fix backspace issues with multiple cursors
+"git gutter update time
 set updatetime=100
 " nercomment
 let g:NERDDefaultAlign = 'left'
@@ -107,3 +108,6 @@ nnoremap <leader>o :Buffers<cr>
 nnoremap <leader>i :BLines<cr>
 nnoremap <leader>m :Marks<cr>
 nnoremap <leader>f :Rg<cr>
+
+" Nerdtree color update
+hi Directory guifg=#FF0000 ctermfg=red
