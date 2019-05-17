@@ -19,6 +19,7 @@
 "  vim-plug when :PlugInstall is run
 
 call plug#begin()
+Plug 'tomasiser/vim-code-dark'
 Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
@@ -42,7 +43,7 @@ call plug#end()
 " THEME & LOOKS
 " ---------------------------------------------------
 
-colorscheme spacegray
+colorscheme codedark
 let g:airline_theme='minimalist'
 
 " ---------------------------------------------------
@@ -88,6 +89,10 @@ if exists('&signcolumn')  " Vim 7.4.2201
 else
   let g:gitgutter_sign_column_always = 1
 endif
+
+" Prettier
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 
 " ---------------------------------------------------
 " MAPPINGS
